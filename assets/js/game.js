@@ -5,25 +5,34 @@
  * 2S = two of spades (espadas)
  * 
  * La meta es llegar a 21 pts sin pasarnos
+ * El empate de 21 y 21
  */
 
 // deckOfCards = barajaDeCartas
+
+// Patrón Módulo (para que no se pueda ver la baraja en el inspector)
+
 (() => {                                   // función anónima autoinvocada. Se conoce como el patrón de módulo en js
 
  let deckOfCards = [];
  // C = Tréboles, D = Diamantes, H = Corazones, S = espadas
 const types = ['C', 'D', 'H', 'S'];
-const specials = ['A', 'J', 'Q', 'K']
+const specials = ['A', 'J', 'Q', 'K'];
 
 // Score de los jugadores
+// El jugador 0 somos nosotros y el jugador 1 es la computadora
 let scorePlayers = [];
 
-/* ---REFERENCIAS AL DOM, PARA QUE JS PUEDA ACCEDER AL DOM --- */
+
+
+/* ---REFERENCIAS AL DOM, (PARA QUE JS PUEDA ACCEDER AL DOM) --- */
+
+
 
 // Botones de acciones
 const getBtnCard = document.querySelector("#btnGetCard");
-const getStopTurn = document.querySelector("#btnStopTurn");
-const getNewGame = document.querySelector("#btnNewGame");
+const stopBtnTurn = document.querySelector("#btnStopTurn");
+const newBtnGame = document.querySelector("#btnNewGame");
 
 // Área de juego
 const divCardPlayers = document.querySelectorAll('.divCards');
@@ -38,6 +47,7 @@ const startGame = (numPlayer = 2) => {
 console.log('Comenzando el juego');
 // crear la baraja
 deckOfCards = createDeck();
+// console.log(deckOfCards);
 
 // cada nuevo juego se reinician los puntajes
 scorePlayers = [];
@@ -56,15 +66,15 @@ let deckOfCards = [];
 for(let i=2; i <=10; i++) {
     for(let type of types) {
     deckOfCards.push(i + type)
+    // console.log(`deckOfCards ${i}`, deckOfCards);
     }
 }
 
 for(let type of types) {
     for( let special of specials) {
-        deckOfCards.push(special + type)
+        deckOfCards.push(special + type);
     }
 }
-
 console.log(deckOfCards);
 return _.shuffle(deckOfCards);
 };
@@ -103,7 +113,7 @@ const turnComputer = () => {
 
 /* LOS EVENTOS DE LOS BOTONES */
 
-btnNewGame.addEventListener('click', ()=>{
+newBtnGame.addEventListener('click', ()=>{
     startGame();
 });
 
