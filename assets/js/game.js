@@ -45,10 +45,9 @@ const scoreHtml = document.querySelectorAll('small');
 
 //INICIAR JUEGO
 const startGame = (numPlayer = 2) => {
-console.log('Comenzando el juego');
 // crear la baraja
 deckOfCards = createDeck();
-console.log(deckOfCards);
+// console.log(deckOfCards);
 
 // cada nuevo juego se reinician los puntajes
 scorePlayers = [];
@@ -74,7 +73,7 @@ let deckOfCards = [];
 for(let i=2; i <=10; i++) {
     for(let type of types) {
     deckOfCards.push(i + type)
-    // console.log(`deckOfCards ${i}`, deckOfCards);
+    // console.log(`deckOfCards ${i}`, deckOfCards); para ver cómo se reparten los i con los types
     }
 }
 
@@ -117,7 +116,7 @@ const valueCard = (card) => {
 const countScore = (card, turn) => {
   scorePlayers[turn] += valueCard(card); // [0,0]
   // scorePlayers[turn] = scorePlayers[turn] = valueCard(card);
-  console.log(valueCard(card));        
+//   console.log(valueCard(card));   // para ver el valor de cada carta    
   scoreHtml[turn].innerText = scorePlayers[turn];
   return scorePlayers[turn];
 }
